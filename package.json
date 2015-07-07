@@ -12,7 +12,8 @@
   "dependencies": {
     "speaker": "~0.2.4",
     "request": "^2.55.0",
-    "lame": "^1.0.2"
+    "lame": "^1.0.2",
+    "stockscraper": "~0.0.0"
   },
   "engines": {
       "node": "0.10.22"
