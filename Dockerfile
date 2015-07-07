@@ -1,5 +1,5 @@
 #base-image for arm with node
-FROM resin/rpi-raspbian
+FROM resin/rpi-node:0.10.36
 
 MAINTAINER Shaun Mulligan <shaun@resin.io>
 

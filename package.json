@@ -1,6 +1,6 @@
 {
   "name": "stocks-to-speech",
-  "description": "Speaks you Stock Price of Choice",
+  "description": "An audio stock ticker of your favourite stocks",
   "repository": {
     "type": "git",
     "url": ""
