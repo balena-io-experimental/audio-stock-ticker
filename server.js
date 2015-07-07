@@ -1,15 +1,9 @@
-var express = require('express');
-var app = express();
+var request = require('request');
+var Lame = require('lame');
+var Speaker = require('speaker');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+var text = 'Say hello to my little friend';
 
-var server = app.listen(80, function () {
-
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening on port ', port);
-
-});
+var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
+  encodeURIComponent(text);
+request(url).pipe(new Lame.Decoder).pipe(new Speaker);
