@@ -4,15 +4,12 @@ This is a simple node.js project built on [resin.io][resin-link]. It should work
 
 The audio stock ticker will verbally announce a list of your favourite stocks every couple of minutes or hours, depending on how you configure it.
 
-To add more or change the list of stocks, simply edit the stockList object in `server.js`:
+To add more or change one of the 3 stocks, simply set an `Environment Variable` called `STOCK_N` with a string of `stockSymbol, stockName`.
+e.g.:
 ```
-var stockList = {
-  'AMZN': 'Amazon',
-  'AAPL': 'Apple Computers',
-  'GOOG': 'Google'
-};
+STOCK_1  `AMZN, Amazon.com Incoperated`
 ```
-The `key` needs to be a valid stock symbol and the `value` can be any name for the stock. This is the name the raspberry pi will announce with it's corresponding price.
+The stockName after the `,` is the name that will actually be read out, where as the `AMZN` part is the **NASDAQ** stock symbol.
 
 To get this project up and running, you will need to signup for a resin.io account [here][signup-page] and set up a device, have a look at our [Getting Started tutorial][gettingStarted-link]. Once you are set up with resin.io, you will need to clone this repo locally:
 ```
