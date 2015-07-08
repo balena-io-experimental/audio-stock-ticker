@@ -5,17 +5,15 @@
     "type": "git",
     "url": ""
   },
-  "scripts": {
-    "preinstall": "bash deps.sh"
-  },
   "version": "0.0.3",
   "dependencies": {
     "speaker": "~0.2.4",
     "request": "^2.55.0",
     "lame": "^1.0.2",
-    "stockscraper": "~0.0.0"
+    "google-stocks": "~0.1.3",
+    "async": "~1.3.0"
   },
   "engines": {
-      "node": "0.10.22"
+    "node": "0.10.22"
   }
 }

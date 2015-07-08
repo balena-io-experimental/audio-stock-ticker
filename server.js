@@ -1,14 +1,23 @@
 var request = require('request');
 var Lame = require('lame');
 var Speaker = require('speaker');
-var stockscraper = require('stockscraper');
+var googleStocks = require('google-stocks');
+var async = require('async');
 
-stockscraper.scrape('NASDAQ', 'AMZN', function(err, data) {
-  text = 'The current price of Amazon stock is ' + data['l'] + ' dollars'
-  console.log('The current price of Amazon stock is ' + data['l'] +
-    ' dollars');
+var stockList = {
+  'AMZN': 'Amazon',
+  'AAPL': 'Apple Computers',
+  'GOOG': 'Google'
+};
 
-  var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
-    encodeURIComponent(text);
-  request(url).pipe(new Lame.Decoder).pipe(new Speaker);
+async.forEachOfSeries(stockList, function(stockName, stockCode, callback) {
+  googleStocks.get([stockCode], function(error, data) {
+    text = 'The current price of ' + stockName + ' stock is ' +
+      data[0]['l'] + '  dollars'
+    console.log(text);
+    var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
+      encodeURIComponent(text);
+    request(url).pipe(new Lame.Decoder).pipe(new Speaker).on('close',
+      callback);
+  });
 });
