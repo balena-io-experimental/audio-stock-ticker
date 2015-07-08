@@ -13,8 +13,8 @@ var stockList = {
 function readStocks() {
   async.forEachOfSeries(stockList, function(stockName, stockCode, callback) {
     googleStocks.get([stockCode], function(error, data) {
-      text = 'The current price of ' + stockName + ' stock is ' +
-        data[0]['l'] + '  dollars'
+      text = stockName + ' stock is currently priced at ' + data[0]['l'] +
+        '  dollars'
       console.log(text);
       var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
         encodeURIComponent(text);
