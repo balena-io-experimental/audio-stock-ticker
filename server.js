@@ -10,14 +10,19 @@ var stockList = {
   'GOOG': 'Google'
 };
 
-async.forEachOfSeries(stockList, function(stockName, stockCode, callback) {
-  googleStocks.get([stockCode], function(error, data) {
-    text = 'The current price of ' + stockName + ' stock is ' +
-      data[0]['l'] + '  dollars'
-    console.log(text);
-    var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
-      encodeURIComponent(text);
-    request(url).pipe(new Lame.Decoder).pipe(new Speaker).on('close',
-      callback);
+function readStocks() {
+  async.forEachOfSeries(stockList, function(stockName, stockCode, callback) {
+    googleStocks.get([stockCode], function(error, data) {
+      text = 'The current price of ' + stockName + ' stock is ' +
+        data[0]['l'] + '  dollars'
+      console.log(text);
+      var url = 'http://translate.google.com/translate_tts?tl=en&q=' +
+        encodeURIComponent(text);
+      request(url).pipe(new Lame.Decoder).pipe(new Speaker).on('close',
+        callback);
+    });
   });
-});
+}
+
+readStocks();
+setInterval(readStocks, 60 * 1000)
