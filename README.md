@@ -7,7 +7,7 @@ The audio stock ticker will verbally announce a list of your favourite stocks ev
 To add more or change one of the 3 stocks, simply set an `Environment Variable` called `STOCK_N` with a string of `stockSymbol, stockName`.
 e.g.:
 ```
-STOCK_1  `AMZN, Amazon.com Incoperated`
+STOCK_1  `AMZN, Amazon.com Incorporated`
 ```
 The stockName after the `,` is the name that will actually be read out, where as the `AMZN` part is the **NASDAQ** stock symbol.
 
