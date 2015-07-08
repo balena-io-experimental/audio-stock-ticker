@@ -25,4 +25,5 @@ function readStocks() {
 }
 
 readStocks();
+//set the period in seconds between announcements.
 setInterval(readStocks, 60 * 1000)
