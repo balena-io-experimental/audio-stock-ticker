@@ -9,12 +9,11 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     libasound2-dev \
 	  && rm -rf /var/lib/apt/lists/*
 
-# install deps on build server
-COPY package.json package.json
-RUN npm install
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-# copy all files to /app dir
-COPY . /app
+COPY package.json /usr/src/app/
+RUN DEBIAN_FRONTEND=noninteractive JOBS=MAX npm install --unsafe-perm
+COPY . /usr/src/app
 
-# Run server when container runs on device
-CMD ["node", "/app/server.js"]
+CMD ["node", "server.js"]
