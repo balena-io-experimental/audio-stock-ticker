@@ -7,7 +7,7 @@ var async = require('async');
 
 var stock1 = (process.env['STOCK_1'] || 'AMZN, Amazon.com').split(',');
 var stock2 = (process.env['STOCK_2'] || 'GOOG, Google Inc').split(',');
-var stock3 = (process.env['STOCK_2'] || 'AAPL, Apple Computers').split(',');
+var stock3 = (process.env['STOCK_3'] || 'AAPL, Apple Computers').split(',');
 
 var interval = process.env['INTERVAL'] || 60
 
